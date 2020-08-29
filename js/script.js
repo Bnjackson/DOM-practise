@@ -1,3 +1,18 @@
+/*DOM - Document Object Model - Is a tree like representation of all the content on a page that can be modified. The DOM is created when the page is loaded. The document object is the main "entry point" to the page. We can change or create anything on the page using it. With the object model JavaScript can change all the HTML, CSS on the page. As well as adding more elements, styles etc. 
+*/
+
+//When your HTML is parsed by a web broswer it is converted to the DOM.
+
+/*DOM Nodes - Everything in an HTML document is a node - nodes are objects that have many properties and methods attached to them. These properties and methods are the primary tools we use to manipulate our webpage with JavaScript.: 
+*The entire document is a document node 
+*Every HTML element is an element node 
+*The text inside HTML elements are text nodes
+*Every HTML attribute is an attribute node(deprecated)
+*All comments are comment nodes
+
+You can use a combination of CSS style selectors and relationship properties to target the nodes you want. e.g. class, id, element and relationship to other element e.g. parent, sibling child.
+*/
+
 //console.dir(document); - Shows all properties and methods of the Document object. We can access the document propeties 
 
 console.log(document.domain);
@@ -61,7 +76,7 @@ for(let i = 0; i < odd.length; i++) {
 };
 
 
-//Traversing the DOM - Is finding HTML elements based on their relation to other elements. Traversing the DOM is more efficient than the previous method as it selecting an element from neighbours rather than searching the whole DOM. 
+//Traversing the DOM - Is finding HTML elements based on their relation to other elements. Traversing the DOM is more efficient than the previous method as it is selecting an element from neighbours rather than searching the whole DOM. 
 
 let itemList = document.querySelector('#items');
 
@@ -85,15 +100,67 @@ console.log(itemList.children);
 console.log(itemList.firstElementChild);
 //itemList.firstELementChild[1].style.color = 'blue';
 
-//nextSibling - Includes text(whitespace) 
+//nextSibling/previousSibling - Includes text(whitespace) 
 //console.log(itemList.nextSibling);
 
-//nextElementSibling - Choses the next sibling - Siblings are elements who share the same parent 
+//nextElementSibling/previousElementSibiling - Choses the next sibling or the previous sibling - Siblings are elements who share the same parent.
 let listGroupItem = document.getElementsByClassName('list-group-item');
 console.log(listGroupItem[1].nextElementSibling);
 
+//Creating and inserting elements into the DOM - createElement
+let newDiv = document.createElement('div');
 
+//add class
+newDiv.className = 'new-div-class';
 
+//add id 
+newDiv.id = 'new-div-id';
+
+//add attribute 
+newDiv.setAttribute('title','New Div')
+
+//create text node
+let newDivText = document.createTextNode('Hello World');
+
+//add text to div
+newDiv.appendChild(newDivText);
+
+//Adding div made in JavaScript to the DOM 
+
+let container = document.querySelector('header .container');
+let h1 = document.querySelector('header h1');
+
+//container.insertBefore(newDiv, h1);//takes two parameters what we are inserting and what we are inserting before
+
+console.log(newDiv);
+
+/* 
+EVENTS - HTML DOM events allow JavaScript to register different event handlers on elements in an HTML document. Events are normally used in combination with functions, and the function will not be executed before the event occurs(such as when a user presses a button).
+*/
+
+let button = document.getElementById('button');
+button.addEventListener('click' , buttonClick);
+
+function buttonClick(){
+    console.log('Button clicked');
+    document.getElementById('button').style.background = 'cyan';
+}
+//By adding e to the function parameters connected to an event we are able to get data such as the id, classname etc. function functionName (e) {} console.log(e.target.id); 
+
+/*Other event types include - dblclick, mousedown, mouseup, mouseenter, mouseleave, mousemove, keydown, keyup, focus, blur, cut, paste, input, change, submit   */
+
+//Keyboard events 
+let itemInput = document.querySelector('input[type="text"]');
+let form = document.querySelector('form');
+
+form.addEventListener('submit', runEvent);
+
+itemInput.addEventListener('keydown', runEvent);
+
+function runEvent(e) {
+    e.preventDefault();//There is no external file to submit form to this prevents it from submiting to an external file by default.
+    console.log('EVENT TYPE: '+e.type);
+}
 
 
 
