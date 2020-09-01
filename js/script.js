@@ -30,19 +30,19 @@ let headerTitle = document.getElementById('header-title');
 headerTitle.style.color = 'black';
 headerTitle.innerText = 'Todo List';
 
-//getELementByClassName
+//getELementsByClassName
 let items = document.getElementsByClassName('list-group-item');
 console.log(items);
 items[0].innerText = 'Go for a run.';//innerText will return the visible text in a node. innerText is more performance heavy as it requires layout information to return the result.
 items[1].textContent = 'Coding.';//textContent will return the full text even if it is hidden. 
 
-//items.style.fontWeight = 'bold'; //We can not add a style to all the elements using this syntax as it is a HTML collection so we have loop through it like an array. 
+//items.style.fontWeight = 'bold'; //We can not add a style to all the elements using this syntax as it is a HTML collection so we have to loop through it like an array. 
 
 for(let i = 0; i < items.length; i++){
      items[i].style.fontWeight = 'bold';
 };
 
-//getElemenentsByTagName //Works the same way as class except replace with tag.
+//getElemenentByTagName //Works the same way as class except replace with tag.
 
 let li = document.getElementsByTagName('li');
 console.log(li);
@@ -107,7 +107,7 @@ console.log(itemList.firstElementChild);
 let listGroupItem = document.getElementsByClassName('list-group-item');
 console.log(listGroupItem[1].nextElementSibling);
 
-//Creating and inserting elements into the DOM - createElement
+//Creating and inserting elements into the DOM - createElement this only creates the element to add it to the webpage we have to append it or use the insertBefore method. 
 let newDiv = document.createElement('div');
 
 //add class
@@ -134,9 +134,18 @@ let h1 = document.querySelector('header h1');
 
 console.log(newDiv);
 
+//We can remove an element from the DOM using this.
+//parentNode.removeChild(div);
+
 /* 
-EVENTS - HTML DOM events allow JavaScript to register different event handlers on elements in an HTML document. Events are normally used in combination with functions, and the function will not be executed before the event occurs(such as when a user presses a button).
+EVENTS - The DOM allows us to execute JavaScript when an event occurs such as a user clicking on a HTML element. Events are triggered by listeners and can fire when a button is pressed, when you click an element, when the page loads etc. 
+
+Listeners - using addEventListener() we can add an event type and a event handler to an element. When the listerner is triggered the event handler will run.
 */
+
+//Event handlers - The event handler is the block of code usually a function that runs when the event fires.
+
+//We can add e to the function parameters, e is is an object that references the event itself. Within the object you have access to many useful propeties and functions such as which mouse button or key was pressed or information about the events target.
 
 let button = document.getElementById('button');
 button.addEventListener('click' , buttonClick);
@@ -146,6 +155,7 @@ function buttonClick(){
     document.getElementById('button').style.background = 'cyan';
 }
 //By adding e to the function parameters connected to an event we are able to get data such as the id, classname etc. function functionName (e) {} console.log(e.target.id); 
+
 
 /*Other event types include - dblclick, mousedown, mouseup, mouseenter, mouseleave, mousemove, keydown, keyup, focus, blur, cut, paste, input, change, submit   */
 
@@ -162,7 +172,13 @@ function runEvent(e) {
     console.log('EVENT TYPE: '+e.type);
 }
 
+//If attaching lots of similar event listeners to mamy elements. We can use a loop to iterate through a nodelist of all the items matching a specific selector. 
 
+
+/*Bubbling 
+When an event happens on an element, it first runs the handlers on it then on its parents then all the way up on other ancestors.
+It is called bubbling because events bubble up from the inner element up through parents like a bubble in water.
+*/
 
 
 
