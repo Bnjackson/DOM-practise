@@ -174,6 +174,7 @@ function runEvent(e) {
 
 //If attaching lots of similar event listeners to mamy elements. We can use a loop to iterate through a nodelist of all the items matching a specific selector. 
 
+//location:reload() - method reloads the current url like the refresh button.
 
 /*Bubbling 
 When an event happens on an element, it first runs the handlers on it then on its parents then all the way up on other ancestors.
