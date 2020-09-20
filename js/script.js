@@ -137,6 +137,8 @@ console.log(newDiv);
 //We can remove an element from the DOM using this.
 //parentNode.removeChild(div);
 
+//ElEMENT PROPERTIES - .classList returns a list of the class attributes of an element.
+
 /* 
 EVENTS - The DOM allows us to execute JavaScript when an event occurs such as a user clicking on a HTML element. Events are triggered by listeners and can fire when a button is pressed, when you click an element, when the page loads etc. 
 
@@ -179,6 +181,14 @@ function runEvent(e) {
 /*Bubbling 
 When an event happens on an element, it first runs the handlers on it then on its parents then all the way up on other ancestors.
 It is called bubbling because events bubble up from the inner element up through parents like a bubble in water.
+*/
+
+/* EVENT PROPERTIES
+
+.currentTarget is a propety of the event interface which identifies the current target for the event.
+
+.target is a propety of the event interface is a reference to the object onto which the event was dispatched. 
+
 */
 
 
